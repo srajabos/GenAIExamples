@@ -73,6 +73,13 @@ cd GenAIExamples/DocIndexRetriever/intel/cpu/xoen/
 docker compose -f compose_without_rerank.yaml up -d
 ```
 
+To execute the DocRetriever pipeline using the Milvus vector database, utilize the compose_milvus.yaml configuration file and set the MILVUS_HOST parameter.
+```bash
+export MILVUS_HOST=${host_ip}
+cd GenAIExamples/DocIndexRetriever/intel/cpu/xoen/
+docker compose -f compose_milvus_.yaml up -d
+```
+
 ## 4. Validation
 
 Add Knowledge Base via HTTP Links:

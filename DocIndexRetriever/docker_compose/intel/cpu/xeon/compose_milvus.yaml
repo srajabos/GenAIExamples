@@ -67,7 +67,7 @@ services:
     image: ${REGISTRY:-opea}/dataprep:${TAG:-latest}
     container_name: dataprep-milvus-server
     ports:
-      - "${DATAPREP_PORT:-11101}:5000"
+      - "${DATAPREP_PORT:-6007}:5000"
     ipc: host
     environment:
       no_proxy: ${no_proxy}
@@ -76,7 +76,7 @@ services:
       DATAPREP_COMPONENT_NAME: "OPEA_DATAPREP_MILVUS"
       MILVUS_HOST: ${MILVUS_HOST}
       TEI_EMBEDDING_ENDPOINT: ${TEI_EMBEDDING_ENDPOINT}
-      HUGGINGFACEHUB_API_TOKEN: ${HF_TOKEN}
+      HUGGINGFACEHUB_API_TOKEN: ${HUGGINGFACEHUB_API_TOKEN}
       LOGFLAG: ${LOGFLAG}
     restart: unless-stopped
     depends_on:

@@ -42,14 +42,13 @@ function start_services() {
     export TGI_LLM_ENDPOINT="http://${ip_address}:8008"
     export MILVUS_HOST=${ip_address}
     export HUGGINGFACEHUB_API_TOKEN=${HUGGINGFACEHUB_API_TOKEN}
-    export HF_TOKEN=${HUGGINGFACEHUB_API_TOKEN}
     export MEGA_SERVICE_HOST_IP=${ip_address}
     export EMBEDDING_SERVICE_HOST_IP=${ip_address}
     export RETRIEVER_SERVICE_HOST_IP=${ip_address}
     export RERANK_SERVICE_HOST_IP=${ip_address}
     export LLM_SERVICE_HOST_IP=${ip_address}
     export host_ip=${ip_address}
-    export DATAPREP_SERVICE_ENDPOINT="http://${host_ip}:11101/v1/dataprep/ingest"
+    export DATAPREP_SERVICE_ENDPOINT="http://${host_ip}:6007/v1/dataprep/ingest"
     export RERANK_TYPE="tei"
     export LOGFLAG=true
 
@@ -75,7 +74,7 @@ function validate() {
 
 function validate_megaservice() {
     echo "===========Ingest data=================="
-    local CONTENT=$(http_proxy="" curl -X POST "http://${ip_address}:11101/v1/dataprep/ingest" \
+    local CONTENT=$(http_proxy="" curl -X POST "http://${ip_address}:6007/v1/dataprep/ingest" \
      -H "Content-Type: multipart/form-data" \
      -F 'link_list=["https://opea.dev/"]')
     local EXIT_CODE=$(validate "$CONTENT" "Data preparation succeeded" "dataprep-milvus-service-xeon")
